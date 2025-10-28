@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Equipo::class], version = 2, exportSchema = false)
+@Database(entities = [Equipo::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun equipoDao(): EquipoDao
@@ -53,19 +53,19 @@ abstract class AppDatabase : RoomDatabase() {
                 Equipo(nombre = "Colo-Colo", escudo = R.drawable.colo_colo, estadio = "Estadio Monumental", fundacion = "1925", liga = "Primera División"),
                 Equipo(nombre = "Universidad de Chile", escudo = R.drawable.u_de_chile, estadio = "Estadio Nacional", fundacion = "1927", liga = "Primera División"),
                 Equipo(nombre = "Universidad Católica", escudo = R.drawable.u_catolica, estadio = "Estadio San Carlos de Apoquindo", fundacion = "1937", liga = "Primera División"),
-                Equipo(nombre = "Deportes Limache", escudo = R.drawable.primera_division, estadio = "Estadio Nicolás Chahuán Nazar", fundacion = "2012", liga = "Primera División"),
-                Equipo(nombre = "Cobresal", escudo = R.drawable.primera_division, estadio = "Estadio El Cobre", fundacion = "1979", liga = "Primera División"),
-                Equipo(nombre = "Palestino", escudo = R.drawable.primera_division, estadio = "Estadio Municipal de La Cisterna", fundacion = "1920", liga = "Primera División"),
-                Equipo(nombre = "Unión Española", escudo = R.drawable.primera_division, estadio = "Estadio Santa Laura", fundacion = "1897", liga = "Primera División"),
-                Equipo(nombre = "Audax Italiano", escudo = R.drawable.primera_division, estadio = "Estadio Bicentenario de La Florida", fundacion = "1910", liga = "Primera División"),
-                Equipo(nombre = "Huachipato", escudo = R.drawable.primera_division, estadio = "Estadio Huachipato-CAP Acero", fundacion = "1947", liga = "Primera División"),
-                Equipo(nombre = "Everton", escudo = R.drawable.primera_division, estadio = "Estadio Sausalito", fundacion = "1909", liga = "Primera División"),
-                Equipo(nombre = "O\'Higgins", escudo = R.drawable.primera_division, estadio = "Estadio El Teniente", fundacion = "1955", liga = "Primera División"),
-                Equipo(nombre = "Ñublense", escudo = R.drawable.primera_division, estadio = "Estadio Nelson Oyarzún Arenas", fundacion = "1916", liga = "Primera División"),
-                Equipo(nombre = "Coquimbo Unido", escudo = R.drawable.primera_division, estadio = "Estadio Francisco Sánchez Rumoroso", fundacion = "1958", liga = "Primera División"),
-                Equipo(nombre = "Deportes Iquique", escudo = R.drawable.primera_division, estadio = "Estadio Tierra de Campeones", fundacion = "1978", liga = "Primera División"),
-                Equipo(nombre = "Unión La Calera", escudo = R.drawable.primera_division, estadio = "Estadio Nicolás Chahuán Nazar", fundacion = "1954", liga = "Primera División"),
-                Equipo(nombre = "Deportes Copiapó", escudo = R.drawable.primera_division, estadio = "Estadio Luis Valenzuela Hermosilla", fundacion = "1999", liga = "Primera División"),
+                Equipo(nombre = "Deportes Limache", escudo = R.drawable.limache, estadio = "Estadio Nicolás Chahuán Nazar", fundacion = "2012", liga = "Primera División"),
+                Equipo(nombre = "Cobresal", escudo = R.drawable.cobresal, estadio = "Estadio El Cobre", fundacion = "1979", liga = "Primera División"),
+                Equipo(nombre = "Palestino", escudo = R.drawable.palestino, estadio = "Estadio Municipal de La Cisterna", fundacion = "1920", liga = "Primera División"),
+                Equipo(nombre = "Unión Española", escudo = R.drawable.union_espanola, estadio = "Estadio Santa Laura", fundacion = "1897", liga = "Primera División"),
+                Equipo(nombre = "Audax Italiano", escudo = R.drawable.audax_italiano, estadio = "Estadio Bicentenario de La Florida", fundacion = "1910", liga = "Primera División"),
+                Equipo(nombre = "Huachipato", escudo = R.drawable.huachipato, estadio = "Estadio Huachipato-CAP Acero", fundacion = "1947", liga = "Primera División"),
+                Equipo(nombre = "Everton", escudo = R.drawable.everton, estadio = "Estadio Sausalito", fundacion = "1909", liga = "Primera División"),
+                Equipo(nombre = "O'Higgins", escudo = R.drawable.ohiggins, estadio = "Estadio El Teniente", fundacion = "1955", liga = "Primera División"),
+                Equipo(nombre = "Ñublense", escudo = R.drawable.nublense, estadio = "Estadio Nelson Oyarzún Arenas", fundacion = "1916", liga = "Primera División"),
+                Equipo(nombre = "Coquimbo Unido", escudo = R.drawable.coquimbo_unido, estadio = "Estadio Francisco Sánchez Rumoroso", fundacion = "1958", liga = "Primera División"),
+                Equipo(nombre = "Deportes Iquique", escudo = R.drawable.iquique, estadio = "Estadio Tierra de Campeones", fundacion = "1978", liga = "Primera División"),
+                Equipo(nombre = "Unión La Calera", escudo = R.drawable.calera, estadio = "Estadio Nicolás Chahuán Nazar", fundacion = "1954", liga = "Primera División"),
+                Equipo(nombre = "Deportes Copiapó", escudo = R.drawable.copiapo, estadio = "Estadio Luis Valenzuela Hermosilla", fundacion = "1999", liga = "Primera División"),
 
                 // --- PRIMERA B ---
                 Equipo(nombre = "Cobreloa", escudo = R.drawable.segunda_division, estadio = "Estadio Zorros del Desierto", fundacion = "1977", liga = "Primera B"),

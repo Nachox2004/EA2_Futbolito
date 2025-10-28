@@ -1,7 +1,6 @@
 package com.example.ea2appmoviles.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ea2appmoviles.model.Equipo
 import com.example.ea2appmoviles.repository.EquipoRepository
@@ -29,4 +28,3 @@ class EquipoViewModel(private val repository: EquipoRepository) : ViewModel() {
         }
     }
 }
-

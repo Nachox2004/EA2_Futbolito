@@ -11,9 +11,8 @@ interface EquipoDao {
     @Query("SELECT * FROM equipos WHERE liga = :liga")
     suspend fun getByLiga(liga: String): List<Equipo>
 
-    // --- ↓ AÑADE ESTA FUNCIÓN AQUÍ ↓ ---
     @Query("SELECT * FROM equipos WHERE id = :id")
-    suspend fun getById(id: Int): Equipo? // El '?' significa que puede devolver null si no lo encuentra
+    suspend fun getById(id: Int): Equipo?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(equipo: Equipo)
