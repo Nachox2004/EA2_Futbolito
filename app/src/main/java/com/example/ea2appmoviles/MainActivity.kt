@@ -13,7 +13,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -23,6 +22,7 @@ import com.example.ea2appmoviles.ui.theme.EA2AppMovilesTheme
 import com.example.ea2appmoviles.ui.theme.EquipoDetailScreen
 import com.example.ea2appmoviles.ui.theme.Inicio
 import com.example.ea2appmoviles.ui.theme.ListaEquiposScreen
+import com.example.ea2appmoviles.ui.theme.NoticiasScreen
 import com.example.ea2appmoviles.viewmodel.EquipoViewModel
 import com.example.ea2appmoviles.viewmodel.EquipoViewModelFactory
 
@@ -55,6 +55,10 @@ fun AppNavigation(viewModel: EquipoViewModel) {
     NavHost(navController = navController, startDestination = "inicio") {
         composable("inicio") {
             Inicio(navController = navController)
+        }
+
+        composable("noticias") {
+            NoticiasScreen(navController = navController)
         }
 
         composable("lista_equipos/{liga}") { backStackEntry ->

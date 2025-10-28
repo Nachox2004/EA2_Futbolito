@@ -11,10 +11,5 @@ data class Equipo(
     val escudo: Int,
     val estadio: String,
     val fundacion: String,
-    val liga: String,
-
-    val noticia1: String,
-    val noticia2: String,
-    val ultimoPartidoResultado: String,
-    val ultimoPartidoFecha: String
+    val liga: String
 )
