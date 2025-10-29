@@ -17,6 +17,10 @@ class EquipoRepository(private val equipoDao: EquipoDao) {
         return equipoDao.getById(id)
     }
 
+    suspend fun getByName(nombre: String): Equipo? {
+        return equipoDao.getByName(nombre)
+    }
+
     suspend fun insert(equipo: Equipo) {
         equipoDao.insert(equipo)
     }

@@ -44,9 +44,7 @@ fun Inicio(navController: NavController) {
             Spacer(modifier = Modifier.height(32.dp))
 
             Button(
-                onClick = {
-                    navController.navigate("lista_equipos/Primera División")
-                },
+                onClick = { navController.navigate("tabla_posiciones/Primera División") },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Primera División", fontSize = 16.sp)
@@ -55,9 +53,7 @@ fun Inicio(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {
-                    navController.navigate("lista_equipos/Primera B")
-                },
+                onClick = { navController.navigate("tabla_posiciones/Primera B") },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Primera B", fontSize = 16.sp)
@@ -66,9 +62,7 @@ fun Inicio(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {
-                    navController.navigate("noticias")
-                },
+                onClick = { navController.navigate("noticias") },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Noticias", fontSize = 16.sp)

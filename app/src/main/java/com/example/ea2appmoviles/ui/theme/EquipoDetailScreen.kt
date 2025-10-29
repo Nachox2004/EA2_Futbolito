@@ -19,7 +19,7 @@ import com.example.ea2appmoviles.model.Equipo
 @Composable
 fun EquipoDetailScreen(
     navController: NavController,
-    equipo: Equipo
+    equipo: Equipo // Parámetros corregidos
 ) {
     Scaffold(
         topBar = {
@@ -27,10 +27,7 @@ fun EquipoDetailScreen(
                 title = { Text(equipo.nombre) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Volver a la lista"
-                        )
+                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Volver")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -39,17 +36,17 @@ fun EquipoDetailScreen(
             )
         }
     ) { innerPadding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+                .padding(innerPadding),
+            contentAlignment = Alignment.Center
         ) {
             Card(
-                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
             ) {
                 Column(
                     modifier = Modifier.padding(24.dp),
@@ -64,29 +61,12 @@ fun EquipoDetailScreen(
                     Text(
                         text = equipo.nombre,
                         fontSize = 28.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
+                        fontWeight = FontWeight.Bold
                     )
-                    InfoRow(label = "Estadio:", value = equipo.estadio)
-                    InfoRow(label = "Fundación:", value = equipo.fundacion)
-                    InfoRow(label = "Liga:", value = equipo.liga)
+                    Text(text = "Estadio: ${equipo.estadio}", fontSize = 18.sp)
+                    Text(text = "Fundado en: ${equipo.fundacion}", fontSize = 16.sp)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun InfoRow(label: String, value: String) {
-    Row(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = label,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.weight(1f)
-        )
-        Text(
-            text = value,
-            modifier = Modifier.weight(2f)
-        )
     }
 }

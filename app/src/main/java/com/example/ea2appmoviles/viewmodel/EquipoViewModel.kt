@@ -4,11 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ea2appmoviles.model.Equipo
 import com.example.ea2appmoviles.repository.EquipoRepository
+import com.example.ea2appmoviles.repository.JugadorRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class EquipoViewModel(private val repository: EquipoRepository) : ViewModel() {
+class EquipoViewModel(
+    private val equipoRepository: EquipoRepository,
+    private val jugadorRepository: JugadorRepository
+) : ViewModel() {
 
     private val _equipos = MutableStateFlow<List<Equipo>>(emptyList())
     val equipos: StateFlow<List<Equipo>> = _equipos
@@ -18,13 +22,13 @@ class EquipoViewModel(private val repository: EquipoRepository) : ViewModel() {
 
     fun getEquipos(liga: String) {
         viewModelScope.launch {
-            _equipos.value = repository.getByLiga(liga)
+            _equipos.value = equipoRepository.getByLiga(liga)
         }
     }
 
-    fun buscarEquipoPorId(id: Int) {
+    fun buscarEquipoPorNombre(nombre: String) {
         viewModelScope.launch {
-            _equipoSeleccionado.value = repository.getById(id)
+            _equipoSeleccionado.value = equipoRepository.getByName(nombre)
         }
     }
 }

@@ -17,19 +17,17 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ea2appmoviles.database.AppDatabase
 import com.example.ea2appmoviles.repository.EquipoRepository
-import com.example.ea2appmoviles.ui.theme.EA2AppMovilesTheme
-import com.example.ea2appmoviles.ui.theme.EquipoDetailScreen
-import com.example.ea2appmoviles.ui.theme.Inicio
-import com.example.ea2appmoviles.ui.theme.ListaEquiposScreen
-import com.example.ea2appmoviles.ui.theme.NoticiasScreen
+import com.example.ea2appmoviles.repository.JugadorRepository
+import com.example.ea2appmoviles.ui.theme.*
 import com.example.ea2appmoviles.viewmodel.EquipoViewModel
 import com.example.ea2appmoviles.viewmodel.EquipoViewModelFactory
 
 class MainActivity : ComponentActivity() {
 
     private val database by lazy { AppDatabase.getInstance(this) }
-    private val repository by lazy { EquipoRepository(database.equipoDao()) }
-    private val viewModelFactory by lazy { EquipoViewModelFactory(repository) }
+    private val equipoRepository by lazy { EquipoRepository(database.equipoDao()) }
+    private val jugadorRepository by lazy { JugadorRepository(database.jugadorDao()) }
+    private val viewModelFactory by lazy { EquipoViewModelFactory(equipoRepository, jugadorRepository) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,36 +58,25 @@ fun AppNavigation(viewModel: EquipoViewModel) {
             NoticiasScreen(navController = navController)
         }
 
-        composable("lista_equipos/{liga}") { backStackEntry ->
+        composable("tabla_posiciones/{liga}") { backStackEntry ->
             val liga = backStackEntry.arguments?.getString("liga") ?: ""
-
-            LaunchedEffect(liga) {
-                viewModel.getEquipos(liga)
-            }
-
-            val equipos by viewModel.equipos.collectAsState()
-
-            ListaEquiposScreen(
-                navController = navController,
-                equipos = equipos
-            )
+            TablaPosicionesScreen(navController = navController, liga = liga)
         }
 
-        composable("detalle_equipo/{equipoId}") { backStackEntry ->
-            val equipoId = backStackEntry.arguments?.getString("equipoId")?.toIntOrNull()
-            LaunchedEffect(equipoId) {
-                if (equipoId != null) {
-                    viewModel.buscarEquipoPorId(equipoId)
-                }
+        composable("fecha/{liga}") { backStackEntry ->
+            val liga = backStackEntry.arguments?.getString("liga") ?: ""
+            FechaScreen(navController = navController, liga = liga)
+        }
+
+        composable("detalle_equipo/{equipoNombre}") { backStackEntry ->
+            val equipoNombre = backStackEntry.arguments?.getString("equipoNombre") ?: ""
+            LaunchedEffect(equipoNombre) {
+                viewModel.buscarEquipoPorNombre(equipoNombre)
             }
             val equipo by viewModel.equipoSeleccionado.collectAsState()
             equipo?.let {
-                EquipoDetailScreen(
-                    navController = navController,
-                    equipo = it
-                )
+                EquipoDetailScreen(navController = navController, equipo = it)
             }
-
         }
     }
 }
